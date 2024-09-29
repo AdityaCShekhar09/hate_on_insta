@@ -7,6 +7,7 @@ const App = () => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [view, setView] = useState('input'); // New state to toggle between views
+  const [audioFile, setAudioFile] = useState(null); // New state to store the selected audio file
 
   const fetchComments = async () => {
     if (!postUrl) {
@@ -55,6 +56,14 @@ const App = () => {
     }
   };
 
+  const handleAudioFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setAudioFile(file); // Set the selected audio file
+      console.log("Selected audio file:", file.name);
+    }
+  };
+
   return (
     <div className="App">
       {loading ? (
@@ -73,6 +82,23 @@ const App = () => {
               <button onClick={fetchComments} disabled={loading}>
                 Fetch Comments
               </button>
+
+              {/* New button to select audio file */}
+              <button onClick={() => document.getElementById('audioFileInput').click()}>
+                Select Audio File
+              </button>
+
+              {/* Hidden file input */}
+              <input 
+                type="file" 
+                id="audioFileInput" 
+                accept=".mp3" 
+                style={{ display: 'none' }} 
+                onChange={handleAudioFileChange} 
+              />
+
+              {/* Show the selected file's name */}
+              {audioFile && <p>Selected file: {audioFile.name}</p>}
             </>
           ) : (
             <>
