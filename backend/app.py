@@ -51,5 +51,19 @@ def detect():
 
     return jsonify(hate_comments)
 
+@app.route('/transcribe', methods=['POST'])
+def transcribe():
+    data = request.get_json()
+    text = data['text']
+    
+    preprocessed_sentences = vectorizer([text])
+
+    # Predict toxicity for all sentences in one batch
+    predictions = model.predict(np.vstack(preprocessed_sentences))
+    is_toxic = any(prediction[0] > 0.5 for prediction in predictions)
+    print(is_toxic)
+
+    return jsonify({"message": "Text received", "text": is_toxic})
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5050)

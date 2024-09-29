@@ -63,7 +63,7 @@ const App = () => {
         <div className="container">
           {view === 'input' ? (
             <>
-              <h1>Instagram Comment Fetcher</h1>
+              <h1>Instagram Hate Comment Fetcher</h1>
               <input
                 type="text"
                 value={postUrl}
