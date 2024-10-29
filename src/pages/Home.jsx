@@ -18,7 +18,7 @@ const Home = () => {
     navigate('/detect'); // Navigate to Detect component
   };
   return (
-    <div className='min-h-screen bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 flex justify-center items-center p-6'>
+    <div className='min-h-screen overflow-hidden bg-gradient-to-r from-yellow-300 via-orange-400 to-red-500 flex justify-center items-center p-6'>
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

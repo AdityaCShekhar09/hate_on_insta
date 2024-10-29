@@ -17,7 +17,7 @@ const InstagramDetect = () => {
     setError('');
 
     const apiUrl = "https://api.apify.com/v2/acts/apify~instagram-scraper/run-sync-get-dataset-items";
-    const token = "apify_api_wNelAvOWeeYEwnecpknyDE6oyUAWYv0tQKby";
+    const token = "apify_api_UV83Z7PL6BAGFkvfuO22YDWnNhwBBM0LEJkI ";
     const input = {
       directUrls: [postUrl],
       resultsType: 'comments',
@@ -129,44 +129,42 @@ const InstagramDetect = () => {
             </div>
           </div>
         </motion.div>
-        {console.log(comments.length)}
         {/* Results Section */}
-{comments.length > 0 && (
-  <motion.div 
-    initial={{ y: 40, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ delay: 0.2 }}
-    className="mt-8 bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white/30"
-  >
-    <h2 className="text-2xl font-bold text-white mb-6">Analysis Results</h2>
-    <div className="space-y-4">
-      {comments.map((comment, index) => (
-        <motion.div 
-          key={index}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: index * 0.1 }}
-          className="bg-white/30 rounded-xl p-6 shadow-lg hover:shadow-xl
-                   transition-all duration-300 hover:bg-white/40"
-        >
-          <p className="text-white text-lg">
-            <strong>
-              <a 
-                href={`https://www.instagram.com/${comment.username}/`} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:underline"
-              >
-                {comment.username}
-              </a>:
-            </strong> {comment.text}
-          </p>
-        </motion.div>
-      ))}
-    </div>
-  </motion.div>
-)}
-
+        {comments.length > 0 && (
+          <motion.div 
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="mt-8 bg-white/20 backdrop-blur-md rounded-2xl p-8 shadow-2xl border border-white/30"
+          >
+            <h2 className="text-2xl font-bold text-white mb-6">Analysis Results</h2>
+            <div className="space-y-4">
+              {comments.map((comment, index) => (
+                <motion.div 
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-white/30 rounded-xl p-6 shadow-lg hover:shadow-xl
+                          transition-all duration-300 hover:bg-white/40"
+                >
+                  <p className="text-white text-lg">
+                    <strong>
+                      <a 
+                        href={`https://www.instagram.com/${comment.username}/`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                      >
+                        {comment.username}
+                      </a>:
+                    </strong> {comment.text}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </motion.div>
     </div>
   );
